@@ -8,7 +8,7 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 
-@Addressed(value="CottonDemo/Home", redirects={@Redirect("")})
+@Addressed(value="CottonDemo/Home", redirects={@Redirect("CottonDemo")})
 public class HomeView extends View {
 	
 	private static final long serialVersionUID = 1L;
