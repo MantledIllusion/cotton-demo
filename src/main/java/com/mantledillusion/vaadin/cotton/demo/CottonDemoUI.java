@@ -1,8 +1,9 @@
 package com.mantledillusion.vaadin.cotton.demo;
 
+import com.mantledillusion.injection.hura.Blueprint;
 import com.mantledillusion.vaadin.cotton.CottonUI;
 import com.mantledillusion.vaadin.cotton.UrlResourceRegistry;
-import com.mantledillusion.vaadin.cotton.demo.view.HomeView;
+import com.mantledillusion.vaadin.cotton.demo.view.HomeViewBlueprint;
 import com.vaadin.spring.annotation.SpringUI;
 
 @SpringUI(path="*")
@@ -13,7 +14,7 @@ public class CottonDemoUI extends CottonUI {
 	private static final UrlResourceRegistry URL_REGISTRY = new UrlResourceRegistry();
 	
 	static {
-		URL_REGISTRY.registerViewResource(HomeView.class);
+		URL_REGISTRY.registerViewResource(Blueprint.from(new HomeViewBlueprint()));
 	}
 
 	@Override
