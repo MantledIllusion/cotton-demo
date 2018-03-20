@@ -22,7 +22,7 @@ public class HomeView extends View {
 	private SequenceSingleton sequenceSingleton;
 	@Inject
 	private BeanWithSequenceSingleton1 bean;
-	
+
 	@Inject
 	private Injector injector;
 
@@ -35,22 +35,41 @@ public class HomeView extends View {
 		mainLayout.addComponent(layout);
 		mainLayout.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
 
-		layout.addComponent(new Label("Sequence singleton1 # in this view: " + System.identityHashCode(sequenceSingleton)
-				+ "; Sequence singleton1 # in sub bean: " + System.identityHashCode(bean.sequenceSingleton1)));
-		
+		layout.addComponent(
+				new Label("Sequence singleton1 # in this view: " + System.identityHashCode(sequenceSingleton)
+						+ "; Sequence singleton1 # in sub bean: " + System.identityHashCode(bean.sequenceSingleton1)));
+
 		BeanWithSequenceSingleton1and2 a = this.injector.instantiate(BeanWithSequenceSingleton1and2.class);
 		BeanWithSequenceSingleton1and2 b = this.injector.instantiate(BeanWithSequenceSingleton1and2.class);
-		layout.addComponent(new Label("Sequence singleton1 # in manually injected bean a: " + System.identityHashCode(a.sequenceSingleton1)
-		+ "; Sequence singleton1 # in manually injected bean b: " + System.identityHashCode(b.sequenceSingleton1)));
-		layout.addComponent(new Label("Sequence singleton2 # in manually injected bean a: " + System.identityHashCode(a.sequenceSingleton2)
-				+ "; Sequence singleton2 # in manually injected bean b: " + System.identityHashCode(b.sequenceSingleton2)));
-		
+		layout.addComponent(new Label(
+				"Sequence singleton1 # in manually injected bean a: " + System.identityHashCode(a.sequenceSingleton1)
+						+ "; Sequence singleton1 # in manually injected bean b: "
+						+ System.identityHashCode(b.sequenceSingleton1)));
+		layout.addComponent(new Label(
+				"Sequence singleton2 # in manually injected bean a: " + System.identityHashCode(a.sequenceSingleton2)
+						+ "; Sequence singleton2 # in manually injected bean b: "
+						+ System.identityHashCode(b.sequenceSingleton2)));
+
 		SequenceSingleton singleton = new SequenceSingleton();
-		a = this.injector.instantiate(Blueprint.of(BeanWithSequenceSingleton1and2.class, Singleton.of(SequenceSingleton.SINGLETON_ID_2, singleton)));
-		b = this.injector.instantiate(Blueprint.of(BeanWithSequenceSingleton1and2.class, Singleton.of(SequenceSingleton.SINGLETON_ID_2, singleton)));
-		layout.addComponent(new Label("The manually created singleton # is: "+System.identityHashCode(singleton)));
-		layout.addComponent(new Label("Sequence singleton2 # in manually injected bean a2: " + System.identityHashCode(a.sequenceSingleton2)
-				+ "; Sequence singleton2 # in manually injected bean b2: " + System.identityHashCode(b.sequenceSingleton2)));
+		a = this.injector.instantiate(Blueprint.of(BeanWithSequenceSingleton1and2.class,
+				Singleton.of(SequenceSingleton.SINGLETON_ID_2, singleton)));
+		b = this.injector.instantiate(Blueprint.of(BeanWithSequenceSingleton1and2.class,
+				Singleton.of(SequenceSingleton.SINGLETON_ID_2, singleton)));
+		layout.addComponent(new Label("The manually created singleton # is: " + System.identityHashCode(singleton)));
+		layout.addComponent(new Label(
+				"Sequence singleton2 # in manually injected bean a2: " + System.identityHashCode(a.sequenceSingleton2)
+						+ "; Sequence singleton2 # in manually injected bean b2: "
+						+ System.identityHashCode(b.sequenceSingleton2)));
+
+		BeanWithGlobalSingleton1 c = this.injector.instantiate(BeanWithGlobalSingleton1.class);
+		BeanWithGlobalSingleton1 d = this.injector.instantiate(BeanWithGlobalSingleton1.class);
+		layout.addComponent(new Label(
+				"Global singleton1 # in manually injected bean c: " + System.identityHashCode(c.globalSingleton1)
+						+ "; Global singleton1 # in manually injected bean d: "
+						+ System.identityHashCode(d.globalSingleton1)));
+
+		BeanWithGlobalSingleton2 e = this.injector.instantiate(BeanWithGlobalSingleton2.class);
+		layout.addComponent(new Label("The predefined Global singleton has the id '"+e.globalSingleton2.id+"'"));
 		
 		return mainLayout;
 	}

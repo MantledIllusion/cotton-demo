@@ -1,7 +1,9 @@
 package com.mantledillusion.vaadin.cotton.demo;
 
+import com.mantledillusion.injection.hura.Predefinable.Singleton;
 import com.mantledillusion.vaadin.cotton.CottonUI;
 import com.mantledillusion.vaadin.cotton.UrlResourceRegistry;
+import com.mantledillusion.vaadin.cotton.demo.view.GlobalSingleton;
 import com.mantledillusion.vaadin.cotton.demo.view.HomeView;
 import com.vaadin.spring.annotation.SpringUI;
 
@@ -18,6 +20,8 @@ public class CottonDemoUI extends CottonUI {
 
 	@Override
 	protected UrlResourceRegistry configure(TemporalUIConfiguration configuration) {
+		configuration.registerPredefinables(Singleton.of(GlobalSingleton.SINGLETON_ID_2, new GlobalSingleton("globally defined!")));
+		
 		return URL_REGISTRY;
 	}
 }
