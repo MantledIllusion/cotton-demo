@@ -21,7 +21,7 @@ public class CottonDemoUI extends CottonUI {
 
 	@Override
 	protected UrlResourceRegistry configure(TemporalUIConfiguration configuration) {
-		configuration.registerLocalization("text", "properties", Charset.forName("UTF-8"), Locale.US, Locale.FRANCE);
+		configuration.registerLocalization("text", "properties", Charset.forName("UTF-8"), Locale.ENGLISH, Locale.FRENCH);
 		
 		return URL_REGISTRY;
 	}

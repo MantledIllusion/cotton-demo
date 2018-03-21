@@ -44,6 +44,6 @@ public class HomeView extends View {
 	}
 	
 	Locale getOtherLocale() {
-		return WebEnv.getCurrentLocale().getISO3Language().equals(Locale.US.getISO3Language()) ? Locale.FRANCE : Locale.US;
+		return WebEnv.getCurrentLocale().getISO3Language().equals(Locale.ENGLISH.getISO3Language()) ? Locale.FRENCH : Locale.ENGLISH;
 	}
 }
