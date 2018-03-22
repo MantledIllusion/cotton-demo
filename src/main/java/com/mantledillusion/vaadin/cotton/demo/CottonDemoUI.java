@@ -1,5 +1,8 @@
 package com.mantledillusion.vaadin.cotton.demo;
 
+import java.nio.charset.Charset;
+import java.util.Locale;
+
 import com.mantledillusion.vaadin.cotton.CottonUI;
 import com.mantledillusion.vaadin.cotton.UrlResourceRegistry;
 import com.mantledillusion.vaadin.cotton.demo.view.HomeView;
@@ -18,6 +21,8 @@ public class CottonDemoUI extends CottonUI {
 
 	@Override
 	protected UrlResourceRegistry configure(TemporalUIConfiguration configuration) {
+		configuration.registerLocalization("text", "properties", Charset.forName("UTF-8"), Locale.ENGLISH);
+		
 		return URL_REGISTRY;
 	}
 }
