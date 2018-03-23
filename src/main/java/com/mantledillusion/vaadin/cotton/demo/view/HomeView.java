@@ -26,10 +26,10 @@ public class HomeView extends View {
 	private static final Resource VAADIN_LOGO = new ClassResource("/vaadin_logo.png");
 	
 	private static final OptionPattern<TextField> TEXTFIELD_PATTERN = OptionPattern.of(
-			SizingPattern.withExactWidth(200).andExactHeight(30).build(),
+			SizingPattern.ofExactSize(200, 30),
 			PresetPattern.forTextField().withMaxLength(10).withPlaceholder("textfield.placeholder").build(),
 			NamingPattern.withCaption("textfield.caption.factorized", true).andDescription("textfield.description").build(),
-			StylingPattern.withIcon(VAADIN_LOGO).andStyle(ValoTheme.TEXTFIELD_BORDERLESS).build());
+			StylingPattern.withIcon(VAADIN_LOGO).andFinalStyle(ValoTheme.TEXTFIELD_BORDERLESS));
 
 	@Override
 	protected Component buildUI(TemporalActiveComponentRegistry reg) throws Throwable {
