@@ -38,12 +38,17 @@ public class HomeView extends View {
 		layout.setMargin(false);
 		layout.setSizeFull();
 		
-		TextField fieldA = this.accessor.bindTextFieldForProperty(ModelProperties.STRINGVALUE, NamingPattern.ofCaption("Field A"));
-		layout.addComponent(fieldA);
-		layout.setComponentAlignment(fieldA, Alignment.MIDDLE_RIGHT);
-		layout.setExpandRatio(fieldA, 1);
+		TextField fieldR = this.accessor.bindTextFieldForProperty(ModelProperties.READONLY, NamingPattern.ofCaption("Field ReadOnly"));
+		layout.addComponent(fieldR);
+		layout.setComponentAlignment(fieldR, Alignment.MIDDLE_RIGHT);
+		layout.setExpandRatio(fieldR, 1);
 		
-		TextField fieldB = this.accessor.bindTextFieldForProperty(ModelProperties.STRINGVALUE, NamingPattern.ofCaption("Field B"));
+		TextField fieldA = this.accessor.bindTextFieldForProperty(ModelProperties.STRINGVALUE, NamingPattern.ofCaption("Field StringValue (A)"));
+		layout.addComponent(fieldA);
+		layout.setComponentAlignment(fieldA, Alignment.MIDDLE_CENTER);
+		layout.setExpandRatio(fieldA, 0);
+		
+		TextField fieldB = this.accessor.bindTextFieldForProperty(ModelProperties.STRINGVALUE, NamingPattern.ofCaption("Field StringValue (B)"));
 		layout.addComponent(fieldB);
 		layout.setComponentAlignment(fieldB, Alignment.MIDDLE_CENTER);
 		layout.setExpandRatio(fieldB, 0);

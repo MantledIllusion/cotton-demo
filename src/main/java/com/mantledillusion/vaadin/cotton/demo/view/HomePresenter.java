@@ -19,7 +19,7 @@ public class HomePresenter extends Presenter<HomeView> {
 	
 	@Construct
 	public HomePresenter() {
-		this.model = new Model();
+		this.model = new Model("This is a read-only value");
 		
 		SubObject subObject = new SubObject();
 		this.model.setSubObject(subObject);
