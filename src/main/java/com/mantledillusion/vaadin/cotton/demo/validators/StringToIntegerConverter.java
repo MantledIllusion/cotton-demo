@@ -10,7 +10,7 @@ import com.vaadin.shared.ui.ErrorLevel;
 
 public class StringToIntegerConverter implements Converter<String, Integer> {
 
-	private static final String NULL = "null";
+	private static final String ZERO = "zero";
 	private static final String NUMBER_REGEX = "\\d+";
 	
 	@Override
@@ -20,7 +20,7 @@ public class StringToIntegerConverter implements Converter<String, Integer> {
 
 	@Override
 	public Integer toProperty(String value) {
-		return value == null ? null : (value.equals(NULL) ? 0 : Integer.parseInt(value));
+		return value == null ? null : (value.equals(ZERO) ? 0 : Integer.parseInt(value));
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class StringToIntegerConverter implements Converter<String, Integer> {
 				if (val > Integer.MAX_VALUE || val < Integer.MIN_VALUE) {
 					errors.add(ValidationError.of("Number is to big for an Integer"));
 				}
-			} else if (value.equals(NULL)) {
+			} else if (value.equals(ZERO)) {
 				errors.add(ValidationError.of("Numbers should be written numerically.", ErrorLevel.WARNING));
 			} else {
 				errors.add(ValidationError.of("The given value is no parsable number."));
