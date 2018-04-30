@@ -1,7 +1,7 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-import com.mantledillusion.vaadin.cotton.CottonUI.UserChangeEvent;
 import com.mantledillusion.vaadin.cotton.WebEnv;
+import com.mantledillusion.vaadin.cotton.environment.events.user.UserChangeEvent;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen.ActiveComponent;
 import com.vaadin.ui.Button.ClickEvent;
