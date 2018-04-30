@@ -14,6 +14,8 @@ public class CottonDemoServlet extends CottonServlet {
 
 	@Override
 	protected UrlResourceRegistry configure(TemporalCottonServletConfiguration config) {
+		config.setPreserveOnRefresh(true);
+		
 		UrlResourceRegistry resourceRegistry = new UrlResourceRegistry();
 		resourceRegistry.registerViewResource(HomeView.class);
 		resourceRegistry.registerViewResource(DeepView.class);
