@@ -1,8 +1,8 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-import com.mantledillusion.vaadin.cotton.CottonUI.NavigationAnnouncementEvent;
 import com.mantledillusion.vaadin.cotton.NavigationTarget;
 import com.mantledillusion.vaadin.cotton.WebEnv;
+import com.mantledillusion.vaadin.cotton.environment.events.navigation.NavigationAnnouncementEvent;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presenter;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Subscribe;
