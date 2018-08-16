@@ -3,7 +3,9 @@ package com.mantledillusion.vaadin.cotton.demo.view;
 import com.mantledillusion.injection.hura.Blueprint;
 import com.mantledillusion.injection.hura.Injector;
 import com.mantledillusion.injection.hura.Predefinable.Singleton;
+import com.mantledillusion.injection.hura.Processor.Phase;
 import com.mantledillusion.injection.hura.annotation.Inject;
+import com.mantledillusion.injection.hura.annotation.Process;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Addressed;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Addressed.Redirect;
 import com.mantledillusion.vaadin.cotton.viewpresenter.View;
@@ -25,16 +27,23 @@ public class HomeView extends View {
 
 	@Inject
 	private Injector injector;
+	
+	private VerticalLayout layout;
 
 	@Override
 	protected Component buildUI(TemporalActiveComponentRegistry reg) throws Throwable {
 		HorizontalLayout mainLayout = new HorizontalLayout();
 		mainLayout.setSizeFull();
 
-		VerticalLayout layout = new VerticalLayout();
+		layout = new VerticalLayout();
 		mainLayout.addComponent(layout);
 		mainLayout.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
-
+		
+		return mainLayout;
+	}
+	
+	@Process(Phase.FINALIZE)
+	private void fillUI() {
 		layout.addComponent(
 				new Label("Sequence singleton1 # in this view: " + System.identityHashCode(sequenceSingleton)
 						+ "; Sequence singleton1 # in sub bean: " + System.identityHashCode(bean.sequenceSingleton1)));
@@ -70,7 +79,5 @@ public class HomeView extends View {
 
 		BeanWithGlobalSingleton2 e = this.injector.instantiate(BeanWithGlobalSingleton2.class);
 		layout.addComponent(new Label("The predefined Global singleton has the id '"+e.globalSingleton2.id+"'"));
-		
-		return mainLayout;
 	}
 }
