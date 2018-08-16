@@ -1,6 +1,6 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-public interface BeanPlaceholder {
+public class BeanTypeY {
 
-	String getText();
+	final String text = "Y";
 }

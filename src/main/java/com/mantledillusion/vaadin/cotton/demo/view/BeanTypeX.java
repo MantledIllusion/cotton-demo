@@ -1,6 +1,6 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-public class BeanTypeE {
+public class BeanTypeX {
 
-	final String text = "E";
+	final String text = "X";
 }

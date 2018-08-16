@@ -1,9 +1,9 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-public class BeanTypeF implements BeanPlaceholder {
+public class BeanTypeDImpl implements BeanTypeD {
 
 	@Override
 	public String getText() {
-		return "F";
+		return "D";
 	}
 }

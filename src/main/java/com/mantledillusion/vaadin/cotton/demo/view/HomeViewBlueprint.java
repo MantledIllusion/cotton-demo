@@ -12,7 +12,7 @@ public class HomeViewBlueprint implements TypedBlueprintTemplate<HomeView> {
 	}
 
 	@Define
-	private BeanAllocation<BeanPlaceholder> define() {
-		return BeanAllocation.allocateToType(BeanTypeF.class);
+	private BeanAllocation<BeanTypeD> defineDType() {
+		return BeanAllocation.allocateToType(BeanTypeDImpl.class);
 	}
 }

@@ -2,10 +2,10 @@ package com.mantledillusion.vaadin.cotton.demo.view;
 
 import com.mantledillusion.injection.hura.Blueprint.TypedBlueprintTemplate;
 
-public class BeanBlueprintE implements TypedBlueprintTemplate<BeanTypeE> {
+public class BeanBlueprintY implements TypedBlueprintTemplate<BeanTypeY> {
 
 	@Override
-	public Class<BeanTypeE> getRootType() {
-		return BeanTypeE.class;
+	public Class<BeanTypeY> getRootType() {
+		return BeanTypeY.class;
 	}
 }
