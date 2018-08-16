@@ -1,8 +1,8 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-import com.mantledillusion.injection.hura.Blueprint;
 import com.mantledillusion.injection.hura.Injector;
-import com.mantledillusion.injection.hura.Predefinable.Property;
+import com.mantledillusion.injection.hura.annotation.Adjust.PropertyDef;
+import com.mantledillusion.injection.hura.annotation.Adjust;
 import com.mantledillusion.injection.hura.annotation.Inject;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Addressed;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Addressed.Redirect;
@@ -19,6 +19,15 @@ public class HomeView extends View {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
+	private PropertiedBean predefined;
+	@Inject
+	@Adjust(properties=@PropertyDef(key=PropertiedBean.PROPERTY_KEY, value="spontaneous value"))
+	private PropertiedBean spontaneous;
+	@Inject
+	@Adjust(properties=@PropertyDef(key=PropertiedBean.PROPERTY_KEY, value="0"))
+	private PropertiedBean nonMatching;
+	
+	@Inject
 	private Injector injector;
 
 	@Override
@@ -30,11 +39,9 @@ public class HomeView extends View {
 		mainLayout.addComponent(layout);
 		mainLayout.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
 
-		layout.addComponent(new Label("Predefined value: " + this.injector.instantiate(PropertiedBean.class).property));
-		layout.addComponent(new Label("Spontaneous value: " + this.injector.instantiate(Blueprint
-				.of(PropertiedBean.class, Property.of(PropertiedBean.PROPERTY_KEY, "spontaneous value"))).property));
-		layout.addComponent(new Label("Non-matching value: " + this.injector.instantiate(Blueprint
-				.of(PropertiedBean.class, Property.of(PropertiedBean.PROPERTY_KEY, "0"))).property));
+		layout.addComponent(new Label("Predefined value: " + this.predefined.property));
+		layout.addComponent(new Label("Spontaneous value: " + this.spontaneous.property));
+		layout.addComponent(new Label("Non-matching value: " + this.nonMatching.property));
 
 		return mainLayout;
 	}
