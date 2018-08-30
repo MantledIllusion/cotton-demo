@@ -1,6 +1,5 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-import com.mantledillusion.vaadin.cotton.WebEnv;
 import com.mantledillusion.vaadin.cotton.demo.DemoUser;
 import com.mantledillusion.vaadin.cotton.environment.views.LoginView;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presented;
@@ -40,9 +39,5 @@ public class LoginMask extends LoginView {
 		btnLayout.setComponentAlignment(usr2, Alignment.TOP_CENTER);
 		
 		return layout;
-	}
-	
-	void login(DemoUser user) {
-		WebEnv.logIn(user);
 	}
 }
