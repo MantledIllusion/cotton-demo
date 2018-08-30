@@ -9,7 +9,6 @@ import com.mantledillusion.vaadin.cotton.demo.validators.SumOver17Validator;
 import com.mantledillusion.vaadin.cotton.model.ModelContainer;
 import com.mantledillusion.vaadin.cotton.model.ValidationContext;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
-import com.mantledillusion.vaadin.cotton.viewpresenter.Listen.ActiveComponent;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presenter;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
@@ -30,7 +29,7 @@ public class HomePresenter extends Presenter<HomeView> {
 		this.container.setModel(model);
 	}
 
-	@Listen(@ActiveComponent(HomeView.VALIDATE_BTN_COMPONENT_ID))
+	@Listen(HomeView.VALIDATE_BTN_COMPONENT_ID)
 	private void handleValidateClick(ClickEvent event) {
 		switch (this.container.validate(VALIDATIONCONTEXT)) {
 		case VALID:

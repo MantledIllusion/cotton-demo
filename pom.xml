@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>com.mantledillusion.vaadin</groupId>
 			<artifactId>cotton</artifactId>
-			<version>1.0.0.ALPHA10</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
