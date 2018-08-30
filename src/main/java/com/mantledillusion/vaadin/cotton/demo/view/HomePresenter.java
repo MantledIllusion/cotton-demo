@@ -11,11 +11,10 @@ import com.mantledillusion.vaadin.cotton.demo.model.Address;
 import com.mantledillusion.vaadin.cotton.demo.model.Contact;
 import com.mantledillusion.vaadin.cotton.demo.model.ModelProperties;
 import com.mantledillusion.vaadin.cotton.demo.model.Person;
-import com.mantledillusion.vaadin.cotton.model.BindableGrid.BindableTableSelectionEvent;
+import com.mantledillusion.vaadin.cotton.model.BindableGrid.BindableGridSelectionEvent;
 import com.mantledillusion.vaadin.cotton.model.IndexContext;
 import com.mantledillusion.vaadin.cotton.model.ModelContainer;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
-import com.mantledillusion.vaadin.cotton.viewpresenter.Listen.ActiveComponent;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presenter;
 import com.vaadin.ui.Button.ClickEvent;
 
@@ -50,23 +49,23 @@ public class HomePresenter extends Presenter<HomeView> {
 		getView().refreshBtnEnablement();
 	}
 	
-	@Listen(@ActiveComponent(HomeView.GRID_COMPONENT_ID))
-	private void handleItemSelected(BindableTableSelectionEvent<Contact> event) {
+	@Listen(HomeView.GRID_COMPONENT_ID)
+	private void handleItemSelected(BindableGridSelectionEvent<Contact> event) {
 		getView().refreshBtnEnablement();
 	}
 	
-	@Listen(@ActiveComponent(HomeView.ADD_BTN_COMPONENT_ID))
+	@Listen(HomeView.ADD_BTN_COMPONENT_ID)
 	private void handleAddBtnClicked(ClickEvent event) {
 		this.container.addProperty(ModelProperties.CONTACT_LIST, createNew());
 	}
 	
-	@Listen(@ActiveComponent(HomeView.RENAME_BTN_COMPONENT_ID))
+	@Listen(HomeView.RENAME_BTN_COMPONENT_ID)
 	private void handleRenameBtnClicked(ClickEvent event) {
 		String middlename = EXCHANGE_MIDDLE_NAMES[(int) Math.round(Math.random()*(EXCHANGE_MIDDLE_NAMES.length-1))];
 		this.container.setProperty(ModelProperties.MIDDLENAME, middlename, getSelectedIdxContext());
 	}
 	
-	@Listen(@ActiveComponent(HomeView.DELETE_BTN_COMPONENT_ID))
+	@Listen(HomeView.DELETE_BTN_COMPONENT_ID)
 	private void handleDeleteBtnClicked(ClickEvent event) {
 		this.container.removeProperty(ModelProperties.CONTACT_LIST, getSelectedIdxContext());
 	}
