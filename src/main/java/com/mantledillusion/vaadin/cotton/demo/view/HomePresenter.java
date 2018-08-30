@@ -7,7 +7,6 @@ import com.mantledillusion.vaadin.cotton.demo.model.SubObject;
 import com.mantledillusion.vaadin.cotton.model.ModelContainer;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presenter;
-import com.mantledillusion.vaadin.cotton.viewpresenter.Listen.ActiveComponent;
 import com.vaadin.data.HasValue.ValueChangeEvent;
 
 public class HomePresenter extends Presenter<HomeView> {
@@ -27,7 +26,7 @@ public class HomePresenter extends Presenter<HomeView> {
 		subObject.setStringValue("foobar");
 	}
 	
-	@Listen(@ActiveComponent(HomeView.SWITCH_CB_COMPONENT_ID))
+	@Listen(HomeView.SWITCH_CB_COMPONENT_ID)
 	private void handleSwitch(ValueChangeEvent<Boolean> event) {
 		this.container.setModel(event.getValue() ? this.model : null);
 	}
