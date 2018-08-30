@@ -2,7 +2,6 @@ package com.mantledillusion.vaadin.cotton.demo.view;
 
 import com.mantledillusion.injection.hura.annotation.Property;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
-import com.mantledillusion.vaadin.cotton.viewpresenter.Listen.ActiveComponent;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presenter;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Subscribe;
 import com.vaadin.ui.Button.ClickEvent;
@@ -21,7 +20,7 @@ public class ButtonSwitchPresenter extends Presenter<ButtonSwitchView> {
 	@Property(ID_PROPERTY_KEY)
 	private String id;
 	
-	@Listen(@ActiveComponent(ButtonSwitchView.BTN_COMPONENT_ID))
+	@Listen(ButtonSwitchView.BTN_COMPONENT_ID)
 	private void handleBtnClicked(ClickEvent event) {
 		dispatch(new SwitchEvent(this.id));
 	}

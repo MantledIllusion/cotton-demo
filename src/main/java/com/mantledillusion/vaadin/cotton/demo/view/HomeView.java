@@ -1,7 +1,8 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
 import com.mantledillusion.injection.hura.Injector;
-import com.mantledillusion.injection.hura.Predefinable.Property;
+import com.mantledillusion.injection.hura.annotation.Adjust;
+import com.mantledillusion.injection.hura.annotation.Adjust.PropertyDef;
 import com.mantledillusion.injection.hura.annotation.Inject;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Addressed;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Addressed.Redirect;
@@ -17,20 +18,27 @@ public class HomeView extends View {
 
 	@Inject
 	private Injector injector;
+	@Inject
+	@Adjust(properties=@PropertyDef(key=ButtonSwitchPresenter.ID_PROPERTY_KEY, value="one"))
+	private ButtonSwitchView aOne;
+	@Inject
+	@Adjust(properties=@PropertyDef(key=ButtonSwitchPresenter.ID_PROPERTY_KEY, value="two"))
+	private ButtonSwitchView aTwo;
+	@Inject
+	@Adjust(properties=@PropertyDef(key=ButtonSwitchPresenter.ID_PROPERTY_KEY, value="one"))
+	private ButtonSwitchView bOne;
+	@Inject
+	@Adjust(properties=@PropertyDef(key=ButtonSwitchPresenter.ID_PROPERTY_KEY, value="two"))
+	private ButtonSwitchView bTwo;
 	
 	@Override
 	protected Component buildUI(TemporalActiveComponentRegistry reg) throws Throwable {
 		HorizontalLayout mainLayout = new HorizontalLayout();
 		mainLayout.setSizeFull();
 		
-		HorizontalLayout layout = new HorizontalLayout();
+		HorizontalLayout layout = new HorizontalLayout(this.aOne, this.aTwo, this.bOne, this.bTwo);
 		mainLayout.addComponent(layout);
 		mainLayout.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
-		
-		layout.addComponent(this.injector.instantiate(ButtonSwitchView.class, Property.of(ButtonSwitchPresenter.ID_PROPERTY_KEY, "one")));
-		layout.addComponent(this.injector.instantiate(ButtonSwitchView.class, Property.of(ButtonSwitchPresenter.ID_PROPERTY_KEY, "two")));
-		layout.addComponent(this.injector.instantiate(ButtonSwitchView.class, Property.of(ButtonSwitchPresenter.ID_PROPERTY_KEY, "one")));
-		layout.addComponent(this.injector.instantiate(ButtonSwitchView.class, Property.of(ButtonSwitchPresenter.ID_PROPERTY_KEY, "two")));
 		
 		return mainLayout;
 	}
