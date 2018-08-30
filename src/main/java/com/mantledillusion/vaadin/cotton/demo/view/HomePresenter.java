@@ -6,13 +6,12 @@ import com.mantledillusion.vaadin.cotton.environment.events.navigation.Navigatio
 import com.mantledillusion.vaadin.cotton.viewpresenter.Listen;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Presenter;
 import com.mantledillusion.vaadin.cotton.viewpresenter.Subscribe;
-import com.mantledillusion.vaadin.cotton.viewpresenter.Listen.ActiveComponent;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 
 public class HomePresenter extends Presenter<HomeView> {
 
-	@Listen(@ActiveComponent(HomeView.BTN_COMPONENT_ID))
+	@Listen(HomeView.BTN_COMPONENT_ID)
 	private void handleBtnClicked(ClickEvent event) {
 		WebEnv.navigateTo(NavigationTarget.of(DeepView.class));
 	}
