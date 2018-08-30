@@ -1,6 +1,5 @@
 package com.mantledillusion.vaadin.cotton.demo.view;
 
-import com.mantledillusion.injection.hura.Injector;
 import com.mantledillusion.injection.hura.annotation.Adjust;
 import com.mantledillusion.injection.hura.annotation.Adjust.PropertyDef;
 import com.mantledillusion.injection.hura.annotation.Inject;
@@ -15,9 +14,7 @@ import com.vaadin.ui.HorizontalLayout;
 public class HomeView extends View {
 	
 	private static final long serialVersionUID = 1L;
-
-	@Inject
-	private Injector injector;
+	
 	@Inject
 	@Adjust(properties=@PropertyDef(key=ButtonSwitchPresenter.ID_PROPERTY_KEY, value="one"))
 	private ButtonSwitchView aOne;
